@@ -1,0 +1,51 @@
+﻿@model LeaveON.Models.DynamicForm
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DynamicForm</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TableName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TableName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsAutoTtruncate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsAutoTtruncate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ColumnDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ColumnDescription)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

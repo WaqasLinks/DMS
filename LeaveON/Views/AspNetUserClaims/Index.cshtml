@@ -1,0 +1,94 @@
+@model IEnumerable<Repository.Models.AspNetUserClaim>
+
+@{
+  ViewBag.Title = "Access Rights";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+  <div class="form-horizontal">
+    @using (Html.BeginForm("Index", "AspNetUserClaims"))
+    {
+      @Html.AntiForgeryToken()
+
+
+      <h4>Access Rights</h4>
+      <hr />
+      @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+      @Html.DropDownList("UserId", (IEnumerable<SelectListItem>)ViewBag.Employees, null, new { @class = "form-control" })
+      @Html.DropDownList("ClaimValue", (IEnumerable<SelectListItem>)ViewBag.Departments, null, new { @class = "form-control" })
+
+
+      <div class="form-group">
+        <div class="col-md-offset-2 col-md-10 AddClaim">
+          <input type="submit" value="Add" class="btn btn-primary" />
+        </div>
+      </div>
+
+    }
+    
+    @using (Html.BeginForm("DeleteClaim", "AspNetUserClaims"))
+    {
+      @Html.AntiForgeryToken()
+
+      <table class="table">
+        <tr>
+
+          <th>
+            User
+          </th>
+          <th>
+            Department
+          </th>
+
+          <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+          <tr>
+            @*<td style="display:none;"><input type="hidden" name="AnnualOffDay.Index" value="@(counter)" /></td>*@
+            @*<td>
+              @Html.HiddenFor(modelItem => item.UserId)
+            </td>*@
+            <td>
+              @Html.DisplayFor(modelItem => item.AspNetUser.UserName)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.ClaimType)
+            </td>
+
+            <td>
+              @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+              @*<input type="submit" Class="DeleteClaim" name="AspNetUserClaim.ClaimType" id="Delete@(item.Id)" value="Delete@(item.Id)" class="btn btn-danger" />*@
+              
+
+              <div class="form-group">
+              <div class="col-md-offset-2 col-md-10">
+                    @*<input type="submit" value="Add" class="btn btn-primary" />*@
+                <button type="submit" Class="btn btn-danger DeleteClaim" name="ClaimId" id="Delete@(item.Id)" value="@(item.Id)">Delete</button>
+              </div>
+              </div>
+
+            </td>
+          </tr>
+        }
+
+      </table>
+    }
+
+  </div>
+
+<script>
+  $(".DeleteClaim").on('click', function () {
+    if (!confirm('Are you sure?')) {
+      return false;
+    }
+  });
+    //
+  $(".AddClaim").on('click', function () {
+    if (!confirm('Are you sure?')) {
+      return false;
+    }
+  });
+</script>

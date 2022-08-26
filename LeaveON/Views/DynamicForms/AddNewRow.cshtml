@@ -1,0 +1,15 @@
+
+@model string
+
+<tr>
+  <td style="display:none;"><input type="hidden" name="DynamicForm.Index" value="@Model" /></td>
+  <td style="width:120px;"><input type="text" name="DynamicFormColumns[@Model].ColumnName" class="form-control" placeholder="Column Name"> </td>
+  <td> @Html.DropDownList("DynamicFormColumns[" + Model + "].DataType", new SelectList(ViewBag.DataTypes, "nvarchar"), null, new { @class = "form-control", style = "width: 145px;" })</td>
+  <td><input type="number" name="DynamicFormColumns[@Model].Length" class="form-control" placeholder="Length"> </td>
+  <td><input type="number" name="DynamicFormColumns[@Model].Min" class="form-control" placeholder="Min"> </td>
+  <td><input type="number" name="DynamicFormColumns[@Model].Max" class="form-control" placeholder="Max"> </td>
+  <td style="width:80px;"><input type="checkbox" name="DynamicFormColumns[@Model].IsNullable" id="DynamicFormColumns[@Model].IsNullable" onchange="checkValue('DynamicFormColumns[@Model].IsNullable')" value="false"> Not Null</td>
+  <td style="width:120px;"><input type="checkbox" name="DynamicFormColumns[@Model].IsPrimaryKey" id="DynamicFormColumns[@Model].IsPrimaryKey" onchange="checkValue('DynamicFormColumns[@Model].IsPrimaryKey')" value="false"> Primary Key</td>
+  <td> <a href="javascript:void(0);" class=" btn btn-danger removeRow">x</a></td>
+
+</tr>

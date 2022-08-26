@@ -1,0 +1,124 @@
+@model IEnumerable<TimeManagement.Models.UD_TB_AccessTime_Data>
+  <div id="NewData">
+    @if (!(Model is null))
+    { 
+    <table class="table">
+      <tr>
+        <th>
+          @Html.DisplayNameFor(model => model.EmployeeName)
+        </th>
+        <th>
+          @Html.DisplayNameFor(model => model.EmployeeNumber)
+        </th>
+        <th>
+          @Html.DisplayNameFor(model => model.DepartmentID)
+        </th>
+        <th>
+          @Html.DisplayNameFor(model => model.DepartmentName)
+        </th>
+        <th>
+          @Html.DisplayNameFor(model => model.Date_IN)
+        </th>
+        <th>
+          @Html.DisplayNameFor(model => model.Day_IN)
+        </th>
+        <th>
+          @Html.DisplayNameFor(model => model.Time_IN)
+        </th>
+        <th>
+          @Html.DisplayNameFor(model => model.ReaderID_IN)
+        </th>
+        <th>
+          @Html.DisplayNameFor(model => model.DeviceName_IN)
+        </th>
+        <th>
+          @Html.DisplayNameFor(model => model.Date_OUT)
+        </th>
+        <th>
+          @Html.DisplayNameFor(model => model.Day_OUT)
+        </th>
+        <th>
+          @Html.DisplayNameFor(model => model.Time_OUT)
+        </th>
+        <th>
+          @Html.DisplayNameFor(model => model.ReaderID_OUT)
+        </th>
+        <th>
+          @Html.DisplayNameFor(model => model.DeviceName_OUT)
+        </th>
+        <th>
+          @Html.DisplayNameFor(model => model.Duration)
+        </th>
+        @*
+        <th></th>*@
+      </tr>
+
+      @foreach (var item in Model)
+      {
+      <tr>
+        <td>
+          @Html.DisplayFor(modelItem => item.EmployeeName)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.EmployeeNumber)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.DepartmentID)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.DepartmentName)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.Date_IN)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.Day_IN)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.Time_IN)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.ReaderID_IN)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.DeviceName_IN)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.Date_OUT)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.Day_OUT)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.Time_OUT)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.ReaderID_OUT)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.DeviceName_OUT)
+        </td>
+        <td>
+
+          @{
+          int val = (int)item.Duration;
+          TimeSpan minutes = TimeSpan.FromMinutes(val);
+
+          @*<text>@minutes.ToString("hh':'mm':'ss")</text>*@
+          <text>@minutes.ToString("hh':'mm")</text>
+          }
+
+          @*@Html.DisplayFor(modelItem => item.Duration/60)*@
+        </td>
+        @*
+        <td>
+          @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+          @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+          @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>*@
+      </tr>
+      }
+
+    </table>
+    }
+  </div>
